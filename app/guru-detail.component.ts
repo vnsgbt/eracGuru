@@ -1,21 +1,35 @@
-import { Component, Input } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core'
+import { ActivatedRoute, Params }   from '@angular/router'
+import { Location }                 from '@angular/common'
 
+import 'rxjs/add/operator/switchMap'
+
+import { GuruService } from './guru.service'
 import { Guru } from './guru'
 
 @Component({
+  moduleId: module.id,
   selector: 'my-guru-detail',
-  template: `
-    <div *ngIf="guru">
-        <h2>{{guru.name}} details!</h2>
-        <div><label>id: </label>{{guru.id}}</div>
-        <div>
-        <label>name: </label>
-        <input [(ngModel)]="guru.name" placeholder="name"/>
-        </div>
-    </div>
-  `
+  templateUrl: '../app/partial/guru-detail.component.html',
+  styleUrls:['../app/partial/guru-detail.component.css']
 })
 
-export class GuruDetailComponent {
+export class GuruDetailComponent implements OnInit {
+    ngOnInit(){
+      this.route.params
+        .switchMap((params: Params) => this.guruService.getGuru(+params['id']))
+        .subscribe(guru => this.guru = guru)
+    }
+
+    goBack() {
+      this.location.back()
+    }
+
     @Input() guru: Guru 
+    
+    constructor(
+      private guruService: GuruService,
+      private route: ActivatedRoute,
+      private location: Location
+    ){}
 }
