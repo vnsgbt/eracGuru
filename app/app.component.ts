@@ -12,14 +12,7 @@ import { Component } from '@angular/core'
         <span class="badge">{{guru.id}}</span> {{guru.name}}
       </li>
     </ul>
-    <div *ngIf="selectedGuru">
-      <h2>{{selectedGuru.name}} details!</h2>
-      <div><label>id: </label>{{selectedGuru.id}}</div>
-      <div>
-        <label>name: </label>
-        <input [(ngModel)]="selectedGuru.name" placeholder="name"/>
-      </div>
-    </div>
+    <my-guru-detail [guru]="selectedGuru"></my-guru-detail>
   `,
   styles: [`
     .selected {
