@@ -23,6 +23,10 @@ import { DashboardComponent } from './dashboard.component'
         component: DashboardComponent
       },
       {
+        path: 'detail/:id',
+        component: GuruDetailComponent
+      },
+      {
         path: '',
         redirectTo: '/dashboard',
         pathMatch: 'full'

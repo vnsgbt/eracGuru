@@ -12,4 +12,8 @@ export class GuruService {
         // )
         // .then(() => GURUS)
     }
+    getGuru(id: number): Promise<Guru>{
+        return this.getGurus()
+            .then(gurus => gurus.find(guru => guru.id === id))
+    }
 }
