@@ -61,4 +61,12 @@ export class GuruService {
             .then(res => res.json().data)
             .catch(this.handleError)
     }
+
+    delete(id: number): Promise<Guru>{
+        let url = `${this.gurusUrl}/${id}`
+        return this.http.delete(url, {headers: this.headers})
+            .toPromise()
+            .then(()=>null)
+            .catch(this.handleError)
+    }
 }

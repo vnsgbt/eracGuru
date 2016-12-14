@@ -9,6 +9,10 @@
 <ul class="gurus">
     <li *ngFor="let guru of gurus" [class.selected]="guru === selectedGuru" (click)="onSelect(guru)">
         <span class="badge">{{guru.id}}</span> {{guru.name}}
+        <button 
+            class="delete" 
+            (click)="delete(guru); $event.stopPropagation()">x
+        </button>
     </li>
 </ul>
 <div *ngIf="selectedGuru">

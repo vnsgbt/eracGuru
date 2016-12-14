@@ -45,4 +45,13 @@ export class GurusComponent implements OnInit {
         this.selectedGuru = null
       })
   }
+
+  delete(guru: Guru) {
+    this.guruService
+      .delete(guru.id)
+      .then(()=>{
+        this.gurus = this.gurus.filter(g => g !== guru)
+        if (this.selectedGuru === guru) {this.selectedGuru = null}
+      })
+  }
 }
