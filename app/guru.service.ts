@@ -5,7 +5,11 @@ import { GURUS } from './mock-gurus'
 
 @Injectable()
 export class GuruService {
-    getGurus(): Guru[] {
-        return GURUS
+    getGurus(): Promise<Guru[]> {
+        // return Promise.resolve(GURUS)
+        return new Promise<Guru[]>(
+            res => setTimeout(res, 2000)
+        )
+        .then(() => GURUS)
     }
 }

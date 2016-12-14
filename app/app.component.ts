@@ -86,6 +86,6 @@ export class AppComponent implements OnInit {
   }
 
   getGurus(){
-    this.gurus = this.guruService.getGurus()
+    this.guruService.getGurus().then(gurus => this.gurus = gurus)
   }
 }
