@@ -1,4 +1,7 @@
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
+
+import { GuruService } from './guru.service'
+import { Guru } from './guru'
 
 @Component({
   selector: 'my-app',
@@ -63,32 +66,26 @@ import { Component } from '@angular/core'
       border-radius: 4px 0 0 4px;
     }
   `],
+  providers: [GuruService]
 })
 
-export class AppComponent  {
+export class AppComponent implements OnInit {
   title = 'Erac Gurus' 
-  gurus = GURUS
+
+  gurus: Guru[]
   selectedGuru: Guru
 
   onSelect(guru: Guru) {
     this.selectedGuru = guru
   }
-}
 
-export class Guru {
-  id: number
-  name: string
-}
+  constructor(private guruService: GuruService){}
+  
+  ngOnInit(){
+    this.getGurus()
+  }
 
-let GURUS: Guru[] = [
-  { id: 11, name: 'Wendy'},
-  { id: 12, name: 'Adam'},
-  { id: 13, name: 'Anantha'},
-  { id: 13, name: 'Shaul'},
-  { id: 13, name: 'Jon'},
-  { id: 14, name: 'Dan'},
-  { id: 15, name: 'Rich'},
-  { id: 16, name: 'Harita'},
-  { id: 17, name: 'Tim'},
-  { id: 18, name: 'Steve'},
-]
+  getGurus(){
+    this.gurus = this.guruService.getGurus()
+  }
+}
