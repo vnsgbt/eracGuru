@@ -9,29 +9,13 @@ import { GurusComponent } from './gurus.component'
 import { GuruService } from './guru.service'
 import { DashboardComponent } from './dashboard.component'
 
+import { AppRoutingModule }     from './app-routing.module';
+
 @NgModule({
   imports: [ 
     BrowserModule, 
     FormsModule, 
-    RouterModule.forRoot([
-      {
-        path: 'gurus',
-        component: GurusComponent    
-      },
-      {
-        path: 'dashboard',
-        component: DashboardComponent
-      },
-      {
-        path: 'detail/:id',
-        component: GuruDetailComponent
-      },
-      {
-        path: '',
-        redirectTo: '/dashboard',
-        pathMatch: 'full'
-      }
-    ])  
+    AppRoutingModule
   ],
   declarations: [ 
     AppComponent, 
