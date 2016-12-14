@@ -1,4 +1,11 @@
 <h2>My Gurus</h2>
+<div>
+  <label>Guru name:</label> <input #GuruName />
+  <button (click)="add(GuruName.value); GuruName.value=''">
+    Add
+  </button>
+</div>
+
 <ul class="gurus">
     <li *ngFor="let guru of gurus" [class.selected]="guru === selectedGuru" (click)="onSelect(guru)">
         <span class="badge">{{guru.id}}</span> {{guru.name}}

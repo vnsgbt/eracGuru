@@ -35,4 +35,14 @@ export class GurusComponent implements OnInit {
   gotoDetail(){
     this.router.navigate(['/detail', this.selectedGuru.id])
   }
+
+  add(name: string) {
+    name = name.trim()
+    if (!name) {return}
+    this.guruService.create(name)
+      .then(guru => {
+        this.gurus.push(guru)
+        this.selectedGuru = null
+      })
+  }
 }
