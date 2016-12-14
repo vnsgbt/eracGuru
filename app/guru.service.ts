@@ -8,6 +8,7 @@ import { Guru } from './guru'
 @Injectable()
 export class GuruService {
     private gurusUrl = 'api/gurus'
+    private headers = new Headers({'Content-Type': 'application/json'})
 
     constructor(private http: Http){}
 
@@ -39,5 +40,14 @@ export class GuruService {
 
         // return this.getGurus()
         //     .then(gurus => gurus.find(guru => guru.id === id))
+    }
+
+    update(guru: Guru): Promise<Guru> {
+        let url = `${this.gurusUrl}/${guru.id}`
+        return this.http
+            .put(url, JSON.stringify(guru), {headers: this.headers})
+            .toPromise()
+            .then(()=> guru)
+            .catch(this.handleError)
     }
 }

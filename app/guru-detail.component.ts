@@ -32,4 +32,8 @@ export class GuruDetailComponent implements OnInit {
       private route: ActivatedRoute,
       private location: Location
     ){}
+
+    save() {
+      this.guruService.update(this.guru).then(()=>this.goBack())
+    }
 }
