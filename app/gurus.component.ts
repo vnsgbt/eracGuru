@@ -35,4 +35,23 @@ export class GurusComponent implements OnInit {
   gotoDetail(){
     this.router.navigate(['/detail', this.selectedGuru.id])
   }
+
+  add(name: string) {
+    name = name.trim()
+    if (!name) {return}
+    this.guruService.create(name)
+      .then(guru => {
+        this.gurus.push(guru)
+        this.selectedGuru = null
+      })
+  }
+
+  delete(guru: Guru) {
+    this.guruService
+      .delete(guru.id)
+      .then(()=>{
+        this.gurus = this.gurus.filter(g => g !== guru)
+        if (this.selectedGuru === guru) {this.selectedGuru = null}
+      })
+  }
 }
