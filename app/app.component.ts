@@ -6,12 +6,13 @@ import { Component } from '@angular/core'
     <h1>{{title}}</h1>
     
     <nav>
-        <a routerLink="/dashboard">Dashboard</a>
-        <a routerLink="/gurus">Gurus</a>
+      <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+      <a routerLink="/gurus" routerLinkActive="active">Gurus</a>
     </nav>
 
     <router-outlet></router-outlet>
-  `
+  `,
+  styleUrls:['../app/partial/app.component.css']
 })
 
 export class AppComponent {

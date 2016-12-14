@@ -10,7 +10,8 @@ import { Guru } from './guru'
 @Component({
   moduleId: module.id,
   selector: 'my-guru-detail',
-  templateUrl: '../app/partial/guru-detail.component.html'
+  templateUrl: '../app/partial/guru-detail.component.html',
+  styleUrls:['../app/partial/guru-detail.component.css']
 })
 
 export class GuruDetailComponent implements OnInit {
