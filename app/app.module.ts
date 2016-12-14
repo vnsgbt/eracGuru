@@ -4,10 +4,13 @@ import { FormsModule }   from '@angular/forms'
 
 import { AppComponent }  from './app.component';
 import { GuruDetailComponent } from './guru-detail.component'
+import { GurusComponent } from './gurus.component'
+import { GuruService } from './guru.service'
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule ],
-  declarations: [ AppComponent, GuruDetailComponent ],
+  declarations: [ AppComponent, GuruDetailComponent, GurusComponent ],
+  providers:    [ GuruService ],
   bootstrap:    [ AppComponent ]
 })
 
