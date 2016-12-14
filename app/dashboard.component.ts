@@ -6,7 +6,7 @@ import { GuruService } from './guru.service'
 @Component({
   moduleId: module.id,
   selector: 'my-dashboard',
-  templateUrl: 'partial/dashboard.component.html',
+  templateUrl: '../app/partial/dashboard.component.html',
 })
 
 export class DashboardComponent implements OnInit {
